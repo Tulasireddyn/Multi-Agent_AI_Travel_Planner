@@ -196,28 +196,53 @@ export default function Home() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
+                  <label className="text-sm font-semibold text-slate-400">Number of People</label>
+                  <select
+                    value={formData.num_people}
+                    onChange={(e) => setFormData({ ...formData, num_people: e.target.value })}
+                    className="w-full bg-slate-950 border border-white/10 rounded-2xl px-4 py-3 focus:ring-2 focus:ring-indigo-500/50 outline-none appearance-none cursor-pointer"
+                  >
+                    {["1", "2", "3", "4-6", "7-10", "10+"].map(num => (
+                      <option key={num} className="bg-slate-900" value={num}>{num}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="space-y-2">
                   <label className="text-sm font-semibold text-slate-400">Budget</label>
                   <select
                     value={formData.budget_type}
                     onChange={(e) => setFormData({ ...formData, budget_type: e.target.value })}
-                    className="w-full bg-slate-950 border border-white/10 rounded-2xl px-4 py-3 focus:ring-2 focus:ring-indigo-500/50 outline-none appearance-none"
+                    className="w-full bg-slate-950 border border-white/10 rounded-2xl px-4 py-3 focus:ring-2 focus:ring-indigo-500/50 outline-none appearance-none cursor-pointer"
                   >
                     {["Budget", "Mid-Range", "Luxury"].map(b => (
                       <option key={b} className="bg-slate-900" value={b}>{b}</option>
                     ))}
                   </select>
                 </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-slate-400">Style</label>
                   <select
                     value={formData.holiday_type}
                     onChange={(e) => setFormData({ ...formData, holiday_type: e.target.value })}
-                    className="w-full bg-slate-950 border border-white/10 rounded-2xl px-4 py-3 focus:ring-2 focus:ring-indigo-500/50 outline-none appearance-none"
+                    className="w-full bg-slate-950 border border-white/10 rounded-2xl px-4 py-3 focus:ring-2 focus:ring-indigo-500/50 outline-none appearance-none cursor-pointer"
                   >
                     {["Any", "Adventure", "Romantic", "Family", "Beach", "Backpacking"].map(t => (
                       <option key={t} className="bg-slate-900" value={t}>{t}</option>
                     ))}
                   </select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-semibold text-slate-400">Comments</label>
+                  <input
+                    type="text"
+                    value={formData.comments}
+                    onChange={(e) => setFormData({ ...formData, comments: e.target.value })}
+                    className="w-full bg-slate-950 border border-white/10 rounded-2xl px-5 py-3 focus:ring-2 focus:ring-indigo-500/50 outline-none transition-all placeholder:text-slate-600"
+                    placeholder="e.g. food lover, history"
+                  />
                 </div>
               </div>
 
