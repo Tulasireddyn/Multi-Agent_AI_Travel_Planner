@@ -17,20 +17,20 @@ The workflow leverages a directed acyclic graph (DAG) structure using **LangGrap
 ```mermaid
 graph TD
     Start([User Request]) --> Router{Orchestrator}
-    Router --> ItineraryAgent[Itinerary Agent 🗺️]
-    Router --> ActivityAgent[Activities Agent with RAG 🎯]
-    Router --> WeatherAgent[Weather Agent 🌤️]
-    Router --> PackingAgent[Packing Agent 🎒]
-    Router --> FoodAgent[Food & Culture Agent 🍽️]
-    Router --> LinksAgent[Resource Agent 🔗]
+    Router --> ItineraryAgent["Itinerary Agent 🗺️"]
+    Router --> ActivityAgent["Activities Agent 🎯"]
+    Router --> WeatherAgent["Weather Agent 🌤️"]
+    Router --> PackingAgent["Packing Agent 🎒"]
+    Router --> FoodAgent["Food & Culture Agent 🍽️"]
+    Router --> LinksAgent["Resource Agent 🔗"]
     
-    subgraph RAG Pipeline
-        WebScraper[Web Scraper & BS4] --> TextChunker[Text Splitter]
-        TextChunker --> FAISS[FAISS Vector Store]
-        FAISS --> GeminiEmbeddings[Gemini Embeddings]
+    subgraph RAG_Engine ["RAG Vector Engine"]
+        WebScraper["Web Scraper & BS4"] --> TextChunker["Text Splitter"]
+        TextChunker --> FAISS["FAISS Vector Store"]
+        FAISS --> GeminiEmbeddings["Gemini Embeddings"]
     end
     
-    ActivityAgent <--> RAG Pipeline
+    ActivityAgent <--> RAG_Engine
     
     ItineraryAgent --> Database[(SQLite DB)]
     ActivityAgent --> UI[Premium Client UI]
